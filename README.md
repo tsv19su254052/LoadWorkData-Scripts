@@ -18,7 +18,7 @@ XML-ные структуры данных, запросы, преобразов
 Права пользователей на доступ к базам данных соответсвуют их учеткам `Windows` на сервере СУБД.
 
 Недостаток хранимой процедуры - не все результаты работы возвращает в скрипты на Python-е: получилось, не получилось с указанием причины
-(см. раздел [статью](https://docs.microsoft.com/ru-ru/sql/relational-databases/stored-procedures/return-data-from-a-stored-procedure?view=sql-server-ver15) ).
+(см. [статью](https://docs.microsoft.com/ru-ru/sql/relational-databases/stored-procedures/return-data-from-a-stored-procedure?view=sql-server-ver15) ).
 Особенность XSD-схемы - тот же и тот, что она пропускает все или не пропускает ничего.
 
 Собираем **XML**-ные поля, определяемся с их структурой

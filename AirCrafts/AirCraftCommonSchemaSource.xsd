@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<!-- 	todo Конфигурация с URI
-		todo Прокинуть пачку vlan-ов через провайдеров -->
+<!-- 	todo Конфигурация с URI -->
 
 <!-- 	Префиксы пространства имен (краткие псевдонимы вместо их URI) -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -24,8 +23,8 @@
 			xmlns:collation="http://www.w3.org/2013/collation/UCA?strength=secondary"
 			xmlns:xsv="http://www.w3.org/2007/XMLSchema-versioning"
 			xmlns:soapex="http://schemas.xmlsoap.org/soap/envelope"
-			xmlns:p="http://www.w3.org/ns/xproc"
-			xmlns:c="http://www.w3.org/ns/xproc-step"
+			xmlns:xproc="http://www.w3.org/ns/xproc"
+			xmlns:xproc-step="http://www.w3.org/ns/xproc-step"
 			xmlns:err="http://www.w3.org/ns/xproc-error"
 			xmlns:pxf="http://exproc.org/proposed/steps/file"
 			xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -36,7 +35,7 @@
 			targetNamespace=""
 			xsi:schemalocation="http://api.nsgreg.nga.mil/schema/cphd/1.0.1"
 			xsi:noNamespaceSchemaLocation="">
-	<!-- t (вместе со свойством схемы "targetNamespace"), xsd, xsi, ns -->
+	<!-- t (вместе со свойством схемы "targetNamespace"), xsd, xsi, ns - префиксы пространства имен (краткие псевдонимы вместо их URI) -->
 
 	<p:annotation>
 		<p:documentation p="http://www.w3.org/1999/xhtml">

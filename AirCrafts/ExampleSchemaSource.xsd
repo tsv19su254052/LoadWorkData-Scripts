@@ -84,18 +84,3 @@
 		</xsd:complexType>
 	</xsd:element>
 </xsd:schema>
-
-<!--Примеры на запчасти (начало)
-
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-		targetNamespace="http://ns"
-		xmlns:ns="https://www.w3schools.com">
-	<import namespace="https://schemas.microsoft.com/sqlserver/2004/sqltypes"/>
-	<simpleType name="MyUnionType">
-		<union memberTypes="integer string"/>
-	</simpleType>
-	<element name="TestElement" type="ns:MyUnionType"/>
-</schema>'
-
-Примеры на запчасти (окончание)-->
-

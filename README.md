@@ -38,13 +38,17 @@
 
 ![pyCharm - добавил подмодуль Schematron-а в BaseX](https://user-images.githubusercontent.com/104857185/221182787-665e3add-c00d-40ea-83f9-e2db1e2ca7f7.png)
 
-Затем уточнил и подправил собранную XSD-схему:
+Подправил собранную XSD-схему:
 
 ![pyCharm - собираю XSD-схему](https://user-images.githubusercontent.com/104857185/221181126-ef7f3812-9cc1-409d-b998-0b51b725d844.png)
 
+Вставил собранную XSD-схему в скрипт привязки и привязал ее к базе как коллекцию.
+
+![SSMS - привязал схему](https://user-images.githubusercontent.com/104857185/221206221-97c4d302-ef48-4b42-9163-f15e3559d94a.png)
+
 Собрал вручную эталонные XML-ные файлы по хабам и привязал их к собранной XSD-схеме в `Management Studio`:
 
-![SSMS - собираю исходные XML-ный файлы по хабам с привязкой к собранной XSD-схеме](https://user-images.githubusercontent.com/104857185/221181372-d6f906ae-c540-44f7-8b9b-bbe4780fd25c.png)
+![SSMS - собираю исходные XML-ный файлы по хабам с привязкой к собранной XSD-схеме](https://user-images.githubusercontent.com/104857185/221206489-25b6699c-a312-47c6-a63d-0010e67985e6.png)
 
 Для удобства восприятия можно привязать к базе несколько коллекций XSD-схем, вставив в каждый скрипт привязки по одной XSD-схеме.
 

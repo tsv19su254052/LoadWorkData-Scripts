@@ -65,7 +65,7 @@
 
 ![SSMS Сборка XSD-схемы](https://user-images.githubusercontent.com/104857185/174197029-1815510f-f813-4244-8b73-d79f40e28064.png)
  
-![SSMS - привязал схему к базе 001](https://user-images.githubusercontent.com/104857185/221215976-e852d3b4-d3c6-40a4-9e04-ea2a0327528e.png)
+![SSMS - привязал схему к базе 001](https://user-images.githubusercontent.com/104857185/221229955-6c2162ff-0ee3-4524-ad33-6218847b5e2d.png)
 
 Поправки по терминологии:
  - **Коллекцию схем XML** в `Management Studio` точнее называть XSD-схемой.

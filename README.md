@@ -33,11 +33,15 @@
 
 ![pyCharm - генерация XSD-схемы](https://user-images.githubusercontent.com/104857185/219681278-eeec7953-a13d-4ac6-8e42-787312e2caba.png)
 
-Затем уточнить и подправить ее.
+Добавил подмодуль `Schematron`-а в `pyCharm`
+
+![pyCharm - добавил подмодуль Schematron-а в BaseX](https://user-images.githubusercontent.com/104857185/221182787-665e3add-c00d-40ea-83f9-e2db1e2ca7f7.png)
+
+Затем уточнил и подправил собранную XSD-схему.
 
 ![pyCharm - собираю XSD-схему](https://user-images.githubusercontent.com/104857185/221181126-ef7f3812-9cc1-409d-b998-0b51b725d844.png)
 
-Собираю исходные XML-ные файлы по хабам с привязкой к собранной XSD-схеме
+Собирал исходные XML-ные файлы по хабам с привязкой к собранной XSD-схеме.
 
 ![SSMS - собираю исходные XML-ный файлы по хабам с привязкой к собранной XSD-схеме](https://user-images.githubusercontent.com/104857185/221181372-d6f906ae-c540-44f7-8b9b-bbe4780fd25c.png)
 

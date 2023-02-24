@@ -14,7 +14,7 @@
 Недостаток хранимой процедуры - не все результаты работы возвращает в скрипты на Python-е: получилось, не получилось с указанием причины
 (см. [статью](https://docs.microsoft.com/ru-ru/sql/relational-databases/stored-procedures/return-data-from-a-stored-procedure?view=sql-server-ver15) ), как указывалось [ранее](https://github.com/tsv19su254052/tsv19su254052/blob/main/Works.md#3-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0-%D0%B8-%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B1%D0%B0%D0%B7-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-ms-sql-server-%D0%B0-%D0%B2-%D1%87%D0%B0%D1%81%D1%82%D0%B8-sql--xml--xpath--xquery-xsd--%D0%B0-%D1%82%D0%B0%D0%BA%D0%B6%D0%B5-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80-%D0%B8-%D0%B1%D0%B0%D0%B7-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-expath-xsl-xslt-exslt-relax-ng-xspec-xlink-xmark-xinclude-xproc-opml-xql).
 
-Собирал **XML**-ные поля, определился с их структурой
+Собрал **XML**-ные поля, определился с их структурой
 
 ![SSMS Делаем XML-ные поля](https://user-images.githubusercontent.com/104857185/173250391-229e37c8-c996-4d22-bf0f-7df07d0845b0.png)
 

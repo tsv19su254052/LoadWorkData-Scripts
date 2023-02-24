@@ -1,6 +1,6 @@
 Структуры данных, запросы, схемы, преобразования.
 
-Отчеты по базам данных из Management Studio
+Отчеты по базам данных из `Management Studio`:
 
 ![СУБД Полная - Простая - Сжатие - Полная 001 003](https://user-images.githubusercontent.com/37275122/168450358-630fa494-2c0f-4bad-afb1-42bdb44325ec.png)
 

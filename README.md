@@ -41,7 +41,7 @@
 
 ![pyCharm - собираю XSD-схему](https://user-images.githubusercontent.com/104857185/221181126-ef7f3812-9cc1-409d-b998-0b51b725d844.png)
 
-Собирал исходные XML-ные файлы по хабам с привязкой к собранной XSD-схеме в `Management Studio`:
+Собрал вручную эталонные XML-ные файлы по хабам и привязал их к собранной XSD-схеме в `Management Studio`:
 
 ![SSMS - собираю исходные XML-ный файлы по хабам с привязкой к собранной XSD-схеме](https://user-images.githubusercontent.com/104857185/221181372-d6f906ae-c540-44f7-8b9b-bbe4780fd25c.png)
 
@@ -50,7 +50,7 @@
  - [типовые, ссылочные и пользовательские пространства имен](https://www.w3.org/TR/xmlschema11-1),
  - типовые, ссылочные и пользовательские типы данных `XPath & XQuery`.
 
-Далее в XSD-схеме определяются [элементы](https://www.w3schools.com/xml/schema_simple.asp), каждый под своим именем. Полученные таким образом или с помощью [XSLT-преобразования](https://docs.microsoft.com/ru-ru/visualstudio/xml-tools/how-to-execute-an-xslt-transformation-from-the-xml-editor?view=vs-2022) схемы вставляются в общую схему в соответствии с порядком просмотра XML-ных полей. В сложных случаях можно пользоваться [**Schematron**](https://www.schematron.com )-ом, как импортированным модулем внутри среды управления `BaseX`.
+В XSD-схеме определяются [элементы](https://www.w3schools.com/xml/schema_simple.asp), каждый под своим именем. Полученные таким образом или с помощью [XSLT-преобразования](https://docs.microsoft.com/ru-ru/visualstudio/xml-tools/how-to-execute-an-xslt-transformation-from-the-xml-editor?view=vs-2022) схемы вставляются в общую схему в соответствии с порядком просмотра XML-ных полей. В сложных случаях можно пользоваться [**Schematron**](https://www.schematron.com )-ом, как импортированным модулем внутри среды управления `BaseX`.
 
 ![Base X - установил плагин Schematron-а](https://user-images.githubusercontent.com/104857185/220959166-377d2b44-bc79-4e97-b3f1-87393aa887c7.png)
 

@@ -55,7 +55,7 @@
  - [типовые, ссылочные и пользовательские пространства имен](https://www.w3.org/TR/xmlschema11-1),
  - типовые, ссылочные и пользовательские типы данных `XPath & XQuery`.
 
-В XSD-схеме определяем [элементы](https://www.w3schools.com/xml/schema_simple.asp), каждый под своим именем. Полученные таким образом или с помощью [XSLT-преобразования](https://docs.microsoft.com/ru-ru/visualstudio/xml-tools/how-to-execute-an-xslt-transformation-from-the-xml-editor?view=vs-2022) схемы вставляем в общую схему в соответствии с порядком просмотра XML-ных полей. В сложных случаях можно пользоваться [**Schematron**](https://www.schematron.com )-ом, как импортированным модулем внутри среды управления `BaseX`.
+В XSD-схеме определяем [элементы](https://www.w3schools.com/xml/schema_simple.asp), каждый под своим именем. Полученные таким образом или с помощью [XSLT-преобразования](https://docs.microsoft.com/ru-ru/visualstudio/xml-tools/how-to-execute-an-xslt-transformation-from-the-xml-editor?view=vs-2022) схемы вставляем в общую схему в соответствии с порядком просмотра XML-ных полей. В сложных случаях можно пользоваться [**Schematron**](https://www.schematron.com )-ом, как импортированным модулем внутри среды управления [BaseX](https://en.wikipedia.org/wiki/BaseX).
 
 ![Base X - установил плагин Schematron-а](https://user-images.githubusercontent.com/104857185/220959166-377d2b44-bc79-4e97-b3f1-87393aa887c7.png)
 

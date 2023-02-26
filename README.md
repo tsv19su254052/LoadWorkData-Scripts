@@ -29,11 +29,11 @@
 
 ![SSMS - XML-код - Создать схему](https://user-images.githubusercontent.com/104857185/167261451-a42a0c66-2888-4042-88a2-679f1ef6549a.png)
 
-или в `pyCharm` (удобнее в плане подсветки синтаксиса и автодополнения, есть навигация по структуре).
+или в `pyCharm`-е (удобнее в плане подсветки синтаксиса и автодополнения, есть навигация по структуре).
 
 ![pyCharm - генерация XSD-схемы](https://user-images.githubusercontent.com/104857185/219681278-eeec7953-a13d-4ac6-8e42-787312e2caba.png)
 
-Добавил подмодуль `Schematron`-а в `pyCharm`:
+Добавил подмодуль `Schematron`-а в `pyCharm`-е:
 
 ![pyCharm - добавил подмодуль Schematron-а в BaseX](https://user-images.githubusercontent.com/104857185/221182787-665e3add-c00d-40ea-83f9-e2db1e2ca7f7.png)
 

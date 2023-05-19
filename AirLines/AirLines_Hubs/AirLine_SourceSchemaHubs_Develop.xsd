@@ -32,9 +32,10 @@
 
 		   attributeFormDefault="unqualified"
 		   elementFormDefault="qualified"
+		   queryBinding="xslt2"
 		   targetNamespace="https://www.w3schools.com"
-		   xsi:schemaLocation=""
-		   xsi:noNamespaceSchemaLocation="">
+		   xsi:schemaLocation="http://saxon.sf.net"
+		   xsi:noNamespaceSchemaLocation="example.xsd">
 
 	<!--  Следующий импорт не нужен, а дан для читаемости  -->
 	<xs:import namespace="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ContactRecord"/>

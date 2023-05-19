@@ -1,9 +1,9 @@
-:CONNECT data-server-1.movistar.vrn.skylink.local
+-- :CONNECT data-server-1.movistar.vrn.skylink.local
 USE AirFlightsDBNew62WorkBase
 GO
 
 DECLARE @City varchar(250), @Reg VARCHAR(50)
-SET @Reg = 'N7702A'   -- 20056 авиарейсов
+SET @Reg = 'N7702A'   -- 20233 авиарейсов -> 20542
 SET @City = 'Denver'  -- 148
 SET STATISTICS XML ON
 SET Transaction Isolation Level Read Committed

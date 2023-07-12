@@ -1,3 +1,6 @@
 [submodule "ExternalRepos/Schematron-BaseX"]
 	path = ExternalRepos/Schematron-BaseX
 	url = https://github.com/Schematron/schematron-basex
+[submodule "ExternalRepos/SchXSLT"]
+	path = ExternalRepos/SchXSLT
+	url = https://github.com/schxslt/schxslt

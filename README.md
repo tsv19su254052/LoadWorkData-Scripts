@@ -9,9 +9,7 @@
 
 ![СУБД Полная - Простая - Сжатие - Полная 001 004](https://user-images.githubusercontent.com/37275122/168450362-8de3b141-e670-4067-a28e-544cd9cff239.png)
 
-
-
-![SSMS СУБД Полная - Простая - Сжатие - Полная 001 008](https://user-images.githubusercontent.com/104857185/175547592-7a6f3ec4-11e5-4601-be80-2ab19cc456c3.png)
+![SSMS СУБД Полная - Простая - Сжатие - Полная 001 002](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/2ebabdc5-807e-412b-b6fc-e99e17bea887)
 
 Собрал **XML**-ные поля в таблицах:
 

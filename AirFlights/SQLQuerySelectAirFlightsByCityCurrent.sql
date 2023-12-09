@@ -4,7 +4,7 @@ USE AirFlightsDBNew62WorkBase
 GO
 
 DECLARE @City varchar(250), @Reg VARCHAR(50)
-SET @Reg = 'N762SW'   -- 31978 -> 32132 -> 32301
+SET @Reg = 'N762SW'   -- 31978 -> 32132 -> 32301 -> 32455
 SET @City = 'Denver'  -- 148
 SET STATISTICS XML ON
 SET Transaction Isolation Level Read Committed

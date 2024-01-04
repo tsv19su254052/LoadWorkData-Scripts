@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<AirLine_HREFs>
+	<!-- WikiPedia -->
+	<hrefToWikiPedia site="WikiPedia">
+		https://en.wikipedia.org/wiki/Lufthansa_Cargo
+	</hrefToWikiPedia>
+	<!-- AirLineSite -->
+	<hrefToSite site="AirLineSite">
+		http://lufthansa-cargo.com
+		http://example1.com
+		http://example2.com
+	</hrefToSite>
+</AirLine_HREFs>
+<!-- Примечания: -->

@@ -1,0 +1,539 @@
+<ShowPlanXML xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.539" Build="15.0.2000.5">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementText="SELECT&#x9;&#x9;AirPortsTable.AirPortName AS DEPARTURE,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsTable.AirPortCity AS CITY_OUT,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsTable.AirPortCodeIATA AS IATA_OUT,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsTable_1.AirPortName AS ARRIVAL,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsTable_1.AirPortCity AS CITY_IN,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsTable_1.AirPortCodeIATA AS IATA_IN,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;SUM(##AirFlightsCraftsTempTable.QuantityCounted) AS QUANTITY&#xD;&#xA;&#x9;&#x9;FROM&#x9;##AirFlightsCraftsTempTable INNER JOIN  -- todo: пересобрать соединения -&gt; Пересобрал, но не видит базу AirPortsAndRoutesDBNew62 ниже&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsAndRoutesDBNew62.dbo.AirRoutesTable ON ##AirFlightsCraftsTempTable.AirRoute = AirRoutesTable.AirRouteUniqueNumber INNER JOIN&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsAndRoutesDBNew62.dbo.AirPortsTable ON AirRoutesTable.AirPortDeparture = AirPortsTable.AirPortUniqueNumber INNER JOIN&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;AirPortsAndRoutesDBNew62.dbo.AirPortsTable AS AirPortsTable_1 ON AirRoutesTable.AirPortArrival = AirPortsTable_1.AirPortUniqueNumber  &#xD;&#xA;&#x9;&#x9;&#x9;WHERE ##AirFlightsCraftsTempTable.AirCraftRegistration = @Reg&#xD;&#xA;&#x9;&#x9;&#x9;GROUP BY&#x9;AirPortsAndRoutesDBNew62.dbo.AirPortsTable.AirPortName,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AirPortsAndRoutesDBNew62.dbo.AirPortsTable.AirPortCity,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AirPortsAndRoutesDBNew62.dbo.AirPortsTable.AirPortCodeIATA,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AirPortsTable_1.AirPortName,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AirPortsTable_1.AirPortCity,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AirPortsTable_1.AirPortCodeIATA&#xD;&#xA;&#x9;&#x9;&#x9;ORDER BY CITY_OUT, CITY_IN" StatementId="5" StatementCompId="21" StatementType="SELECT" RetrievedFromCache="true" StatementSubTreeCost="1.40589" StatementEstRows="1855.5" SecurityPolicyApplied="false" StatementOptmLevel="FULL" QueryHash="0x9B45D62F5D1AFB32" QueryPlanHash="0xB43C21048A17A769" StatementOptmEarlyAbortReason="TimeOut" CardinalityEstimationModelVersion="150">
+          <StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false"></StatementSetOptions>
+          <QueryPlan DegreeOfParallelism="1" MemoryGrant="25216" CachedPlanSize="88" CompileTime="19" CompileCPU="19" CompileMemory="1392">
+            <MissingIndexes>
+              <MissingIndexGroup Impact="15.2834">
+                <MissingIndex Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]">
+                  <ColumnGroup Usage="EQUALITY">
+                    <Column Name="[AirCraftRegistration]" ColumnId="4"></Column>
+                  </ColumnGroup>
+                  <ColumnGroup Usage="INCLUDE">
+                    <Column Name="[QuantityCounted]" ColumnId="7"></Column>
+                    <Column Name="[AirRoute]" ColumnId="9"></Column>
+                  </ColumnGroup>
+                </MissingIndex>
+              </MissingIndexGroup>
+            </MissingIndexes>
+            <Warnings>
+              <MemoryGrantWarning GrantWarningKind="Excessive Grant" RequestedMemory="25216" GrantedMemory="25216" MaxUsedMemory="1144"></MemoryGrantWarning>
+            </Warnings>
+            <MemoryGrantInfo SerialRequiredMemory="2560" SerialDesiredMemory="25216" RequiredMemory="2560" DesiredMemory="25216" RequestedMemory="25216" GrantWaitTime="0" MaxQueryMemory="3432352" GrantedMemory="25216" MaxUsedMemory="1144" LastRequestedMemory="0" IsMemoryGrantFeedbackAdjusted="No: First Execution"></MemoryGrantInfo>
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="557495" EstimatedPagesCached="209060" EstimatedAvailableDegreeOfParallelism="3" MaxCompileMemory="13930368"></OptimizerHardwareDependentProperties>
+            <OptimizerStatsUsage>
+              <StatisticsInfo LastUpdate="2024-01-04T12:06:02.47" ModificationCount="0" SamplingPercent="100" Statistics="[_WA_Sys_00000009_2A4B4B5E]" Table="[##AirFlightsCraftsTempTable]" Schema="[dbo]" Database="[tempdb]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2022-06-01T00:01:33.05" ModificationCount="223" SamplingPercent="100" Statistics="[PK_AirRoutesTable]" Table="[AirRoutesTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2024-01-04T12:06:02.44" ModificationCount="0" SamplingPercent="100" Statistics="[_WA_Sys_00000004_2A4B4B5E]" Table="[##AirFlightsCraftsTempTable]" Schema="[dbo]" Database="[tempdb]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2023-07-01T09:00:46.26" ModificationCount="1" SamplingPercent="100" Statistics="[IX_AirPortsTable_IATA]" Table="[AirPortsTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2023-12-02T07:39:26.41" ModificationCount="0" SamplingPercent="100" Statistics="[IX_AirRoutesTable_Dep]" Table="[AirRoutesTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2023-12-02T07:39:15.49" ModificationCount="0" SamplingPercent="100" Statistics="[IX_AirRoutesTable_Arr]" Table="[AirRoutesTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2021-05-05T05:41:35.72" ModificationCount="1103" SamplingPercent="100" Statistics="[_WA_Sys_00000004_0EA330E9]" Table="[AirPortsTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2021-05-05T05:41:35.90" ModificationCount="1103" SamplingPercent="100" Statistics="[_WA_Sys_00000005_0EA330E9]" Table="[AirPortsTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2023-07-01T09:00:53.99" ModificationCount="1" SamplingPercent="100" Statistics="[PK_AirPortsTable]" Table="[AirPortsTable]" Schema="[dbo]" Database="[AirPortsAndRoutesDBNew62]"></StatisticsInfo>
+            </OptimizerStatsUsage>
+            <WaitStats>
+              <Wait WaitType="ASYNC_NETWORK_IO" WaitTimeMs="102" WaitCount="129"></Wait>
+            </WaitStats>
+            <QueryTimeStats ElapsedTime="179" CpuTime="76"></QueryTimeStats>
+            <RelOp NodeId="1" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="1855.5" EstimateIO="0" EstimateCPU="0.00018555" AvgRowSize="8249" EstimatedTotalSubtreeCost="1.40589" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+              <OutputList>
+                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                <ColumnReference Column="Expr1008"></ColumnReference>
+              </OutputList>
+              <ComputeScalar>
+                <DefinedValues>
+                  <DefinedValue>
+                    <ColumnReference Column="Expr1008"></ColumnReference>
+                    <ScalarOperator ScalarString="CASE WHEN [globalagg1012]=(0) THEN NULL ELSE [globalagg1014] END">
+                      <IF>
+                        <Condition>
+                          <ScalarOperator>
+                            <Compare CompareOp="EQ">
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Column="globalagg1012"></ColumnReference>
+                                </Identifier>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Const ConstValue="(0)"></Const>
+                              </ScalarOperator>
+                            </Compare>
+                          </ScalarOperator>
+                        </Condition>
+                        <Then>
+                          <ScalarOperator>
+                            <Const ConstValue="NULL"></Const>
+                          </ScalarOperator>
+                        </Then>
+                        <Else>
+                          <ScalarOperator>
+                            <Identifier>
+                              <ColumnReference Column="globalagg1014"></ColumnReference>
+                            </Identifier>
+                          </ScalarOperator>
+                        </Else>
+                      </IF>
+                    </ScalarOperator>
+                  </DefinedValue>
+                </DefinedValues>
+                <RelOp NodeId="2" PhysicalOp="Stream Aggregate" LogicalOp="Aggregate" EstimateRows="1855.5" EstimateIO="0" EstimateCPU="0.00204797" AvgRowSize="8257" EstimatedTotalSubtreeCost="1.4057" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                  <OutputList>
+                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                    <ColumnReference Column="globalagg1012"></ColumnReference>
+                    <ColumnReference Column="globalagg1014"></ColumnReference>
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="72" ActualCPUms="72" ActualEndOfScans="1" ActualExecutions="1"></RunTimeCountersPerThread>
+                  </RunTimeInformation>
+                  <StreamAggregate>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="globalagg1012"></ColumnReference>
+                        <ScalarOperator ScalarString="SUM([partialagg1011])">
+                          <Aggregate Distinct="0" AggType="SUM">
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="partialagg1011"></ColumnReference>
+                              </Identifier>
+                            </ScalarOperator>
+                          </Aggregate>
+                        </ScalarOperator>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="globalagg1014"></ColumnReference>
+                        <ScalarOperator ScalarString="SUM([partialagg1013])">
+                          <Aggregate Distinct="0" AggType="SUM">
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="partialagg1013"></ColumnReference>
+                              </Identifier>
+                            </ScalarOperator>
+                          </Aggregate>
+                        </ScalarOperator>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <GroupBy>
+                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                    </GroupBy>
+                    <RelOp NodeId="3" PhysicalOp="Sort" LogicalOp="Sort" EstimateRows="1867.04" EstimateIO="0.0112613" EstimateCPU="0.0317579" AvgRowSize="8257" EstimatedTotalSubtreeCost="1.40365" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                      <OutputList>
+                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                        <ColumnReference Column="partialagg1011"></ColumnReference>
+                        <ColumnReference Column="partialagg1013"></ColumnReference>
+                      </OutputList>
+                      <MemoryFractions Input="0.935028" Output="1"></MemoryFractions>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="59" ActualCPUms="59" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRebinds="1" ActualRewinds="0" ActualEndOfScans="1" ActualExecutions="1" InputMemoryGrant="21696" OutputMemoryGrant="22784" UsedMemoryGrant="712"></RunTimeCountersPerThread>
+                      </RunTimeInformation>
+                      <Sort Distinct="0">
+                        <OrderBy>
+                          <OrderByColumn Ascending="1">
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="1">
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="1">
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="1">
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="1">
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="1">
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                          </OrderByColumn>
+                        </OrderBy>
+                        <RelOp NodeId="4" PhysicalOp="Merge Join" LogicalOp="Inner Join" EstimateRows="1867.04" EstimateIO="0" EstimateCPU="0.0325677" AvgRowSize="8257" EstimatedTotalSubtreeCost="1.36063" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                          <OutputList>
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                            <ColumnReference Column="partialagg1011"></ColumnReference>
+                            <ColumnReference Column="partialagg1013"></ColumnReference>
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="45" ActualCPUms="45" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualEndOfScans="1" ActualExecutions="1"></RunTimeCountersPerThread>
+                          </RunTimeInformation>
+                          <Merge ManyToMany="0">
+                            <InnerSideJoinColumns>
+                              <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                            </InnerSideJoinColumns>
+                            <OuterSideJoinColumns>
+                              <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortUniqueNumber"></ColumnReference>
+                            </OuterSideJoinColumns>
+                            <Residual>
+                              <ScalarOperator ScalarString="[AirPortsAndRoutesDBNew62].[dbo].[AirPortsTable].[AirPortUniqueNumber] as [AirPortsTable_1].[AirPortUniqueNumber]=[AirPortsAndRoutesDBNew62].[dbo].[AirRoutesTable].[AirPortArrival]">
+                                <Compare CompareOp="EQ">
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortUniqueNumber"></ColumnReference>
+                                    </Identifier>
+                                  </ScalarOperator>
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                    </Identifier>
+                                  </ScalarOperator>
+                                </Compare>
+                              </ScalarOperator>
+                            </Residual>
+                            <RelOp NodeId="5" PhysicalOp="Clustered Index Scan" LogicalOp="Clustered Index Scan" EstimateRows="10886" EstimatedRowsRead="10886" EstimateIO="0.20831" EstimateCPU="0.0121316" AvgRowSize="8089" EstimatedTotalSubtreeCost="0.220442" TableCardinality="10886" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                              <OutputList>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortUniqueNumber"></ColumnReference>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="9714" Batches="0" ActualExecutionMode="Row" ActualElapsedms="2" ActualCPUms="2" ActualScans="1" ActualLogicalReads="249" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="9714" ActualEndOfScans="0" ActualExecutions="1"></RunTimeCountersPerThread>
+                              </RunTimeInformation>
+                              <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortUniqueNumber"></ColumnReference>
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCodeIATA"></ColumnReference>
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortName"></ColumnReference>
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Alias="[AirPortsTable_1]" Column="AirPortCity"></ColumnReference>
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Index="[PK_AirPortsTable]" Alias="[AirPortsTable_1]" IndexKind="Clustered" Storage="RowStore"></Object>
+                              </IndexScan>
+                            </RelOp>
+                            <RelOp NodeId="6" PhysicalOp="Sort" LogicalOp="Sort" EstimateRows="1866.87" EstimateIO="0.0112613" EstimateCPU="0.0317465" AvgRowSize="193" EstimatedTotalSubtreeCost="1.10762" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                              <OutputList>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                                <ColumnReference Column="partialagg1011"></ColumnReference>
+                                <ColumnReference Column="partialagg1013"></ColumnReference>
+                              </OutputList>
+                              <MemoryFractions Input="0.0381356" Output="0.0649718"></MemoryFractions>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="42" ActualCPUms="42" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRebinds="1" ActualRewinds="0" ActualEndOfScans="1" ActualExecutions="1" InputMemoryGrant="1376" OutputMemoryGrant="1600" UsedMemoryGrant="432"></RunTimeCountersPerThread>
+                              </RunTimeInformation>
+                              <Sort Distinct="0">
+                                <OrderBy>
+                                  <OrderByColumn Ascending="1">
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                  </OrderByColumn>
+                                </OrderBy>
+                                <RelOp NodeId="7" PhysicalOp="Merge Join" LogicalOp="Inner Join" EstimateRows="1866.87" EstimateIO="0" EstimateCPU="0.0325673" AvgRowSize="193" EstimatedTotalSubtreeCost="1.06461" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                  <OutputList>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                                    <ColumnReference Column="partialagg1011"></ColumnReference>
+                                    <ColumnReference Column="partialagg1013"></ColumnReference>
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="37" ActualCPUms="37" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualEndOfScans="1" ActualExecutions="1"></RunTimeCountersPerThread>
+                                  </RunTimeInformation>
+                                  <Merge ManyToMany="0">
+                                    <InnerSideJoinColumns>
+                                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                    </InnerSideJoinColumns>
+                                    <OuterSideJoinColumns>
+                                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortUniqueNumber"></ColumnReference>
+                                    </OuterSideJoinColumns>
+                                    <Residual>
+                                      <ScalarOperator ScalarString="[AirPortsAndRoutesDBNew62].[dbo].[AirPortsTable].[AirPortUniqueNumber]=[AirPortsAndRoutesDBNew62].[dbo].[AirRoutesTable].[AirPortDeparture]">
+                                        <Compare CompareOp="EQ">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortUniqueNumber"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </Residual>
+                                    <RelOp NodeId="8" PhysicalOp="Clustered Index Scan" LogicalOp="Clustered Index Scan" EstimateRows="10886" EstimatedRowsRead="10886" EstimateIO="0.20831" EstimateCPU="0.0121316" AvgRowSize="177" EstimatedTotalSubtreeCost="0.220442" TableCardinality="10886" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortUniqueNumber"></ColumnReference>
+                                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="9714" Batches="0" ActualExecutionMode="Row" ActualElapsedms="2" ActualCPUms="2" ActualScans="1" ActualLogicalReads="249" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="9714" ActualEndOfScans="0" ActualExecutions="1"></RunTimeCountersPerThread>
+                                      </RunTimeInformation>
+                                      <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortUniqueNumber"></ColumnReference>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCodeIATA"></ColumnReference>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortName"></ColumnReference>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Column="AirPortCity"></ColumnReference>
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <Object Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirPortsTable]" Index="[PK_AirPortsTable]" IndexKind="Clustered" Storage="RowStore"></Object>
+                                      </IndexScan>
+                                    </RelOp>
+                                    <RelOp NodeId="9" PhysicalOp="Sort" LogicalOp="Sort" EstimateRows="1866.69" EstimateIO="0.0112613" EstimateCPU="0.0317431" AvgRowSize="39" EstimatedTotalSubtreeCost="0.811601" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                        <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                        <ColumnReference Column="partialagg1011"></ColumnReference>
+                                        <ColumnReference Column="partialagg1013"></ColumnReference>
+                                      </OutputList>
+                                      <MemoryFractions Input="0.0145682" Output="0.0268362"></MemoryFractions>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="33" ActualCPUms="33" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRebinds="1" ActualRewinds="0" ActualEndOfScans="1" ActualExecutions="1" InputMemoryGrant="840" OutputMemoryGrant="736" UsedMemoryGrant="144"></RunTimeCountersPerThread>
+                                      </RunTimeInformation>
+                                      <Sort Distinct="0">
+                                        <OrderBy>
+                                          <OrderByColumn Ascending="1">
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                          </OrderByColumn>
+                                        </OrderBy>
+                                        <RelOp NodeId="10" PhysicalOp="Merge Join" LogicalOp="Inner Join" EstimateRows="1866.69" EstimateIO="0" EstimateCPU="0.0355059" AvgRowSize="39" EstimatedTotalSubtreeCost="0.768596" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                          <OutputList>
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                            <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                            <ColumnReference Column="partialagg1011"></ColumnReference>
+                                            <ColumnReference Column="partialagg1013"></ColumnReference>
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="31" ActualCPUms="31" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualEndOfScans="1" ActualExecutions="1"></RunTimeCountersPerThread>
+                                          </RunTimeInformation>
+                                          <Merge ManyToMany="0">
+                                            <InnerSideJoinColumns>
+                                              <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirRouteUniqueNumber"></ColumnReference>
+                                            </InnerSideJoinColumns>
+                                            <OuterSideJoinColumns>
+                                              <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                            </OuterSideJoinColumns>
+                                            <Residual>
+                                              <ScalarOperator ScalarString="[AirPortsAndRoutesDBNew62].[dbo].[AirRoutesTable].[AirRouteUniqueNumber]=[tempdb].[dbo].[##AirFlightsCraftsTempTable].[AirRoute]">
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirRouteUniqueNumber"></ColumnReference>
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Residual>
+                                            <RelOp NodeId="11" PhysicalOp="Sort" LogicalOp="Sort" EstimateRows="1835" EstimateIO="0.0112613" EstimateCPU="0.0311351" AvgRowSize="31" EstimatedTotalSubtreeCost="0.678479" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                              <OutputList>
+                                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                <ColumnReference Column="partialagg1011"></ColumnReference>
+                                                <ColumnReference Column="partialagg1013"></ColumnReference>
+                                              </OutputList>
+                                              <MemoryFractions Input="0.0112994" Output="0.012268"></MemoryFractions>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="27" ActualCPUms="27" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRebinds="1" ActualRewinds="0" ActualEndOfScans="1" ActualExecutions="1" InputMemoryGrant="768" OutputMemoryGrant="400" UsedMemoryGrant="128"></RunTimeCountersPerThread>
+                                              </RunTimeInformation>
+                                              <Sort Distinct="0">
+                                                <OrderBy>
+                                                  <OrderByColumn Ascending="1">
+                                                    <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                  </OrderByColumn>
+                                                </OrderBy>
+                                                <RelOp NodeId="12" PhysicalOp="Hash Match" LogicalOp="Aggregate" EstimateRows="1835" EstimateIO="0" EstimateCPU="0.278832" AvgRowSize="31" EstimatedTotalSubtreeCost="0.636082" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                  <OutputList>
+                                                    <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                    <ColumnReference Column="partialagg1011"></ColumnReference>
+                                                    <ColumnReference Column="partialagg1013"></ColumnReference>
+                                                  </OutputList>
+                                                  <MemoryFractions Input="0.0268362" Output="0.0155367"></MemoryFractions>
+                                                  <RunTimeInformation>
+                                                    <RunTimeCountersPerThread Thread="0" ActualRows="1835" Batches="0" ActualExecutionMode="Row" ActualElapsedms="26" ActualCPUms="26" ActualScans="0" ActualLogicalReads="0" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualEndOfScans="1" ActualExecutions="1" InputMemoryGrant="1632" OutputMemoryGrant="1376" UsedMemoryGrant="704"></RunTimeCountersPerThread>
+                                                  </RunTimeInformation>
+                                                  <Hash>
+                                                    <DefinedValues>
+                                                      <DefinedValue>
+                                                        <ColumnReference Column="partialagg1011"></ColumnReference>
+                                                        <ScalarOperator ScalarString="COUNT_BIG([tempdb].[dbo].[##AirFlightsCraftsTempTable].[QuantityCounted])">
+                                                          <Aggregate Distinct="0" AggType="COUNT_BIG">
+                                                            <ScalarOperator>
+                                                              <Identifier>
+                                                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="QuantityCounted"></ColumnReference>
+                                                              </Identifier>
+                                                            </ScalarOperator>
+                                                          </Aggregate>
+                                                        </ScalarOperator>
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Column="partialagg1013"></ColumnReference>
+                                                        <ScalarOperator ScalarString="SUM([tempdb].[dbo].[##AirFlightsCraftsTempTable].[QuantityCounted])">
+                                                          <Aggregate Distinct="0" AggType="SUM">
+                                                            <ScalarOperator>
+                                                              <Identifier>
+                                                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="QuantityCounted"></ColumnReference>
+                                                              </Identifier>
+                                                            </ScalarOperator>
+                                                          </Aggregate>
+                                                        </ScalarOperator>
+                                                      </DefinedValue>
+                                                    </DefinedValues>
+                                                    <HashKeysBuild>
+                                                      <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                    </HashKeysBuild>
+                                                    <BuildResidual>
+                                                      <ScalarOperator ScalarString="[tempdb].[dbo].[##AirFlightsCraftsTempTable].[AirRoute] = [tempdb].[dbo].[##AirFlightsCraftsTempTable].[AirRoute]">
+                                                        <Compare CompareOp="IS">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </BuildResidual>
+                                                    <RelOp NodeId="13" PhysicalOp="Table Scan" LogicalOp="Table Scan" EstimateRows="32751" EstimatedRowsRead="32751" EstimateIO="0.305347" EstimateCPU="0.0361831" AvgRowSize="39" EstimatedTotalSubtreeCost="0.34153" TableCardinality="32751" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                      <OutputList>
+                                                        <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="QuantityCounted"></ColumnReference>
+                                                        <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                      </OutputList>
+                                                      <RunTimeInformation>
+                                                        <RunTimeCountersPerThread Thread="0" ActualRows="32751" Batches="0" ActualExecutionMode="Row" ActualElapsedms="17" ActualCPUms="17" ActualScans="1" ActualLogicalReads="409" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="32751" ActualEndOfScans="1" ActualExecutions="1"></RunTimeCountersPerThread>
+                                                      </RunTimeInformation>
+                                                      <TableScan Ordered="0" ForcedIndex="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                        <DefinedValues>
+                                                          <DefinedValue>
+                                                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="QuantityCounted"></ColumnReference>
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirRoute"></ColumnReference>
+                                                          </DefinedValue>
+                                                        </DefinedValues>
+                                                        <Object Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" TableReferenceId="-1" IndexKind="Heap" Storage="RowStore"></Object>
+                                                        <Predicate>
+                                                          <ScalarOperator ScalarString="[tempdb].[dbo].[##AirFlightsCraftsTempTable].[AirCraftRegistration]=CONVERT_IMPLICIT(nvarchar(50),[@Reg],0)">
+                                                            <Compare CompareOp="EQ">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[##AirFlightsCraftsTempTable]" Column="AirCraftRegistration"></ColumnReference>
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Column="ConstExpr1009">
+                                                                    <ScalarOperator>
+                                                                      <Convert DataType="nvarchar" Length="100" Style="0" Implicit="1">
+                                                                        <ScalarOperator>
+                                                                          <Identifier>
+                                                                            <ColumnReference Column="@Reg"></ColumnReference>
+                                                                          </Identifier>
+                                                                        </ScalarOperator>
+                                                                      </Convert>
+                                                                    </ScalarOperator>
+                                                                  </ColumnReference>
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                        </Predicate>
+                                                      </TableScan>
+                                                    </RelOp>
+                                                  </Hash>
+                                                </RelOp>
+                                              </Sort>
+                                            </RelOp>
+                                            <RelOp NodeId="14" PhysicalOp="Clustered Index Scan" LogicalOp="Clustered Index Scan" EstimateRows="12317" EstimatedRowsRead="12317" EstimateIO="0.0409028" EstimateCPU="0.0137057" AvgRowSize="31" EstimatedTotalSubtreeCost="0.0546085" TableCardinality="12317" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                              <OutputList>
+                                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirRouteUniqueNumber"></ColumnReference>
+                                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                                <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRows="12297" Batches="0" ActualExecutionMode="Row" ActualElapsedms="2" ActualCPUms="2" ActualScans="1" ActualLogicalReads="54" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="12297" ActualEndOfScans="0" ActualExecutions="1"></RunTimeCountersPerThread>
+                                              </RunTimeInformation>
+                                              <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirRouteUniqueNumber"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortDeparture"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Column="AirPortArrival"></ColumnReference>
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Database="[AirPortsAndRoutesDBNew62]" Schema="[dbo]" Table="[AirRoutesTable]" Index="[PK_AirRoutesTable]" IndexKind="Clustered" Storage="RowStore"></Object>
+                                              </IndexScan>
+                                            </RelOp>
+                                          </Merge>
+                                        </RelOp>
+                                      </Sort>
+                                    </RelOp>
+                                  </Merge>
+                                </RelOp>
+                              </Sort>
+                            </RelOp>
+                          </Merge>
+                        </RelOp>
+                      </Sort>
+                    </RelOp>
+                  </StreamAggregate>
+                </RelOp>
+              </ComputeScalar>
+            </RelOp>
+            <ParameterList>
+              <ColumnReference Column="@Reg" ParameterDataType="varchar(50)" ParameterRuntimeValue="'N273WN'"></ColumnReference>
+            </ParameterList>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>

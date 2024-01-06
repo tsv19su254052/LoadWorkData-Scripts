@@ -1,5 +1,5 @@
 -- :CONNECT data-server-1.movistar.vrn.skylink.local
-:CONNECT terminalserver\mssqlserver15
+:CONNECT terminalserver\sqldeveloper
 USE tempdb
 GO
 

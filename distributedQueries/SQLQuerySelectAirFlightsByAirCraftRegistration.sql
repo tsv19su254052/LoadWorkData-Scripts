@@ -1,5 +1,5 @@
 /*
-На стороне сервера собираем вьюшку по авиаперелетам с регистрациями
+На стороне сервера собираем временную таблицу со случайным именем по авиаперелетам с регистрациями
 */
 DECLARE @Reg VARCHAR(50)
 SET @Reg = 'N270WN'  -- 25228
@@ -18,7 +18,7 @@ SELECT  AirCraftsTable.AirCraftUniqueNumber,
 		AirFlightsTable.QuantityCounted,
 		AirCraftsTable.SourceCSVFile,
 		AirFlightsTable.AirRoute  
-	INTO #AirFlightsCraftsTempTable
+	INTO #AirFlightsCraftsTempTable  -- на сервере появляется временная таблица (см. снимок экрана)
 		FROM    AirFlightsTable INNER JOIN
 				AirCraftsTable ON AirFlightsTable.AirCraft = AirCraftsTable.AirCraftUniqueNumber
 			WHERE AirCraftRegistration = @Reg

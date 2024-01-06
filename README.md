@@ -13,6 +13,8 @@ SQL-ные базы данных и XML-ные структуры данных, 
 
 Отчеты по базам данных:
 
+![SSMS 001](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/0d2fab10-d056-4458-ab94-0fa6faaf7a20)
+
 ![СУБД Полная - Простая - Сжатие - Полная 001 003](https://user-images.githubusercontent.com/37275122/168450358-630fa494-2c0f-4bad-afb1-42bdb44325ec.png)
 
 ![СУБД Полная - Простая - Сжатие - Полная 001 004](https://user-images.githubusercontent.com/37275122/168450362-8de3b141-e670-4067-a28e-544cd9cff239.png)

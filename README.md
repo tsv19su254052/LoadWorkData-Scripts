@@ -5,7 +5,7 @@ SQL-ные базы данных и XML-ные структуры данных, 
 
 ![Установка v14 Выбор компонентов](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/aece1d7b-e113-4779-a7d6-d8f504fa78a5)
 
-база с данными на сервере СУБД с MS SQL Server Enterprice 16-й (выбор компонентов см. снимок экрана ниже).
+база с данными на сервере СУБД с MS SQL Server Enterprice 15-й (выбор компонентов см. снимок экрана ниже).
 
 ![Установка ENU 004](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/addef508-21f6-4808-ad9d-ae357edcf7f8)
 

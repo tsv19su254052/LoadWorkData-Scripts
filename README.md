@@ -29,6 +29,8 @@ SQL-ные базы данных и XML-ные структуры данных, 
 
 ![SSMS СУБД Полная - Простая - Сжатие - Полная 001 002](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/2ebabdc5-807e-412b-b6fc-e99e17bea887)
 
+![SSMS СУБД Полная - Простая - Сжатие - Полная 002](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/fab668d1-17a0-44e2-b876-bc8bc90a98e7)
+
 ![tempdb Удалил все записи авиаперелетов](https://github.com/tsv19su254052/LoadWorkData-Scripts/assets/104857185/22ed95c1-3fb7-4277-b73c-ca00be17df74)
 
 Собрал **XML**-ные поля в таблицах:
